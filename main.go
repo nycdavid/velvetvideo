@@ -4,23 +4,17 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/spf13/afero"
-	"gopkg.in/labstack/echo.v3"
+  "github.com/spf13/afero"
 )
 
-// func main() {
-// AppFs := afero.NewOsFs()
-// files, _ := afero.Glob(AppFs, "files/*")
-//
-// for i := 0; i < len(files); i++ {
-// 	fmt.Println(files[i])
-// }
-// }
-
 func main() {
-	// e := echo.New()
-	// e.Get("/", func(ctx echo.Context) error {
-	// 	return ctx.String(http.StatusOK, "Hello, World!")
-	// })
-	// e.Logger.Fatal(e.Start(":1323"))
+  http.HandleFunc("/", handler)
+  fmt.Println("Listening on port 1323")
+  http.ListenAndServe(":1323", nil)
+}
+
+func handler(w http.ResponseWriter, r *http.Request) {
+  AppFs := afero.NewOsFs()
+  files, _ := afero.Glob(AppFs, "files/*")
+  fmt.Fprintf(w, files[0])
 }
