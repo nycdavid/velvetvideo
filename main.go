@@ -9,6 +9,7 @@ import (
 func main() {
 	e := echo.New()
 	e.GET("/", Home)
+	e.Static("/assets", "assets")
 	e.Start(":1323")
 }
 
