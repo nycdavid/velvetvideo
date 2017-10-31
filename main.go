@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"strconv"
 
+	"github.com/fatih/color"
 	"gopkg.in/labstack/echo.v2"
 	"gopkg.in/labstack/echo.v2/engine"
 	"gopkg.in/labstack/echo.v2/engine/standard"
@@ -34,10 +35,12 @@ func VelvetLogger(next echo.HandlerFunc) echo.HandlerFunc {
 		buf.WriteString(fullUrl)
 		statuscode := strconv.Itoa(res.Status())
 		buf.WriteString(" ")
-		buf.WriteString(statuscode)
-		buf.WriteString(" ")
-		buf.WriteString(http.StatusText(res.Status()))
-		fmt.Println(buf.String())
+		fmt.Print(buf.String())
+		if statuscode == "200" {
+			color.Green("%s %s", statuscode, http.StatusText(res.Status()))
+		} else {
+		}
+
 		next(ctx)
 		return nil
 	}
