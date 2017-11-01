@@ -49,7 +49,9 @@ func VelvetLogger(next echo.HandlerFunc) echo.HandlerFunc {
 func parseReqUrl(url engine.URL) string {
 	var buf bytes.Buffer
 	buf.WriteString(url.Path())
-	buf.WriteString("?")
-	buf.WriteString(url.QueryString())
+	if url.QueryString() != "" {
+		buf.WriteString("?")
+		buf.WriteString(url.QueryString())
+	}
 	return buf.String()
 }
