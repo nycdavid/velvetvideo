@@ -16,7 +16,7 @@ func main() {
 	e := echo.New()
 	e.Use(VelvetLogger)
 	e.GET("/", Home)
-	e.Static("/assets", "assets")
+	e.Static("/dist", "dist")
 	e.Run(standard.New(":1323"))
 }
 
