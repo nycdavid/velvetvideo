@@ -8,12 +8,6 @@
   version = "v1.5.0"
 
 [[projects]]
-  name = "github.com/labstack/echo"
-  packages = [".","context","engine","log"]
-  revision = "e08070379af60f5b9c0fb5bb2d1527ba9624fe43"
-  version = "v2.2.0"
-
-[[projects]]
   name = "github.com/labstack/gommon"
   packages = ["color","log"]
   revision = "57409ada9da0f2afad6664c49502f8c50fbd8476"
@@ -33,6 +27,12 @@
 
 [[projects]]
   branch = "master"
+  name = "github.com/spf13/afero"
+  packages = [".","mem"]
+  revision = "5660eeed305fe5f69c8fc6cf899132a459a97064"
+
+[[projects]]
+  branch = "master"
   name = "github.com/valyala/bytebufferpool"
   packages = ["."]
   revision = "e746df99fe4a3986f4d4f79e13c1e0117ce9c2f7"
@@ -45,9 +45,9 @@
 
 [[projects]]
   branch = "master"
-  name = "golang.org/x/net"
-  packages = ["context"]
-  revision = "c73622c77280266305273cb545f54516ced95b93"
+  name = "golang.org/x/crypto"
+  packages = ["acme","acme/autocert"]
+  revision = "bd6f299fb381e4c3393d1c4b1f0b94f5e77650c8"
 
 [[projects]]
   branch = "master"
@@ -56,14 +56,20 @@
   revision = "661970f62f5897bc0cd5fdca7e087ba8a98a8fa1"
 
 [[projects]]
-  name = "gopkg.in/labstack/echo.v2"
-  packages = [".","engine","engine/standard"]
-  revision = "e08070379af60f5b9c0fb5bb2d1527ba9624fe43"
-  version = "v2.2.0"
+  branch = "master"
+  name = "golang.org/x/text"
+  packages = ["internal/gen","internal/triegen","internal/ucd","transform","unicode/cldr","unicode/norm"]
+  revision = "88f656faf3f37f690df1a32515b479415e1a6769"
+
+[[projects]]
+  name = "gopkg.in/labstack/echo.v3"
+  packages = ["."]
+  revision = "cec7629194fe4bf83b0c72d9a02d340c7a1468ac"
+  version = "3.2.3"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "0d1af22b6f555134648a2328f592e159adb20bc26263cbdb47cf428fb1b36d6e"
+  inputs-digest = "2bfc21a471a315646057d464e3269e20331cb3feaecf5b6fe098ff8cc3116933"
   solver-name = "gps-cdcl"
   solver-version = 1

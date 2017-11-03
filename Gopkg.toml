@@ -28,3 +28,11 @@
 [[constraint]]
   name = "github.com/fatih/color"
   version = "1.5.0"
+
+[[constraint]]
+  name = "gopkg.in/labstack/echo.v3"
+  version = "3.2.3"
+
+[[constraint]]
+  branch = "master"
+  name = "github.com/spf13/afero"
