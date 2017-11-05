@@ -33,6 +33,7 @@ func main() {
 	e.Use(VelvetLogger)
 	e.GET("/", Home)
 	e.Static("/dist", "dist")
+	e.Static("/files", "files")
 	port := fmt.Sprintf(":%s", os.Getenv("PORT"))
 	e.Start(port)
 }
