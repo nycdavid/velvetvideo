@@ -7,6 +7,7 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"strconv"
 
 	"github.com/fatih/color"
 	"github.com/spf13/afero"
@@ -47,12 +48,12 @@ func VelvetLogger(next echo.HandlerFunc) echo.HandlerFunc {
 		var buf bytes.Buffer
 		buf.WriteString(req.Method)
 		buf.WriteString(" ")
-		// fullUrl := parseReqUrl(req.URL.Path)
-		// buf.WriteString(fullUrl)
-		statuscode := res.Status
+		fullUrl := parseReqUrl(req.URL)
+		buf.WriteString(fullUrl)
+		statuscode := strconv.Itoa(res.Status)
 		buf.WriteString(" ")
 		fmt.Print(buf.String())
-		if statuscode == 200 {
+		if res.Status == 200 {
 			color.Green("%s %s", statuscode, http.StatusText(res.Status))
 		} else {
 		}
@@ -64,10 +65,10 @@ func VelvetLogger(next echo.HandlerFunc) echo.HandlerFunc {
 
 func parseReqUrl(url *url.URL) string {
 	var buf bytes.Buffer
-	// buf.WriteString(url.Path())
-	// if url.QueryString() != "" {
-	// 	buf.WriteString("?")
-	// 	buf.WriteString(url.QueryString())
-	// }
+	buf.WriteString(url.Path)
+	if url.RawQuery != "" {
+		buf.WriteString("?")
+		buf.WriteString(url.RawQuery)
+	}
 	return buf.String()
 }
