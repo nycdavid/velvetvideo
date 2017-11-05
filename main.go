@@ -7,6 +7,7 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"os"
 	"strconv"
 
 	"github.com/fatih/color"
@@ -32,7 +33,8 @@ func main() {
 	e.Use(VelvetLogger)
 	e.GET("/", Home)
 	e.Static("/dist", "dist")
-	e.Start(":1323")
+	port := fmt.Sprintf(":%s", os.Getenv("PORT"))
+	e.Start(port)
 }
 
 func Home(ctx echo.Context) error {
